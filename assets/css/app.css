@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit&family=Questrial&family=Quicksand:wght@600&family=Roboto&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.rocky-head {
+    background-color: #272727;
+}
+
+.w-2-5\/12 {
+    width: 18.5%;
+}
+
+.w-9-5\/12 {
+    width: 81.5%;
+}
+
+.search-box {
+    width : 36rem;
+    padding: 12px;
+}
+
+.search-box > input {
+    outline-style: none;
+}
+
+.w-library-submenu {
+    width: 17rem;
+}
+
+.w-fit {
+    width: fit-content;
+}
+
+.banner {
+    background: linear-gradient(to bottom,rgb(25 25 25 / 44%) 0,rgb(173 173 173 / 21%) 100%),url(../images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.brand {
+    font-family: 'Questrial', sans-serif;
+}
+
+.kanit {
+    font-family: 'Kanit', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.bebas {
+    font-family: 'Bebas', sans-serif;
+}
+
+.quick {
+    font-family: 'Quicksand', sans-serif;
+}

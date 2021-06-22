@@ -5,6 +5,9 @@
  * @create date 2021-06-06 08:04:24
  * @modify date 2021-06-06 08:04:24
  * @desc [description]
+ * 
+ * Based Tarsius dummy template for SLiMS OPAC
+ * 
  */
 
 // require helper
@@ -31,20 +34,16 @@ isDirect();
             // set content
             if (!isset($_GET['p']) && !isset($_GET['search'])) {
                 // load first content
-                tarsiusLoad(__DIR__ . '/components/contents.php');
+                tarsiusLoad(__DIR__ . '/components/landingPage.php');
             } 
             else
             {
-                // load dynamic content
-
+                tarsiusLoad(__DIR__ . '/components/content.php');
             }
             ?>
         </div>
 
         <?php
-        // footer
-        tarsiusLoad(__DIR__ . '/components/footer.php');
-
         // JS
         tarsiusLoad(__DIR__.'/components/js.php');
         ?>

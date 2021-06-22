@@ -7,7 +7,7 @@
  * @desc [description]
  */
 
-function tarsiusUrl(string $additionalUrl, string $template = 'tarsius'): string
+function tarsiusUrl(string $additionalUrl, string $template = 'rocky'): string
 {
     return SWB . 'template/'.$template.'/' .$additionalUrl;
 }
