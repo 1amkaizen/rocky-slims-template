@@ -110,7 +110,7 @@ $cssMap = [
     '<!-- Fav Icon -->',
     // ['rel' => 'shortcut icon', 'href' => '', 'type' => 'image/x-icon'],
     '<!-- Css Font -->',
-    ['href' => 'https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900', 'rel' => 'stylesheet'],
+    // ['href' => 'https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900', 'rel' => 'stylesheet'],
     '<!-- Additional CSS Files -->',
     ['href' => tarsiusUrl('assets/css/tailwind.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/css/bootstrap.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],

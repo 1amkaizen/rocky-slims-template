@@ -1,6 +1,6 @@
 const temp = `
     <section class="block mt-4 mx-auto w-full">
-        <div ref="splide" class="splide">
+        <div ref="splide" class="splide in-zi">
             <div class="splide__track w-11/12 mx-auto">
                 <ul class="splide__list">
                     <li class="splide__slide h-auto w-32" v-for="(slide,index) in slides">

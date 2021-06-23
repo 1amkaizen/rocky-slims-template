@@ -14,7 +14,7 @@ isDirect();
 <nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
   <?php imagickCheck() ?>
   <!-- Right -->
-  <div class="flex flex-shrink-0 items-center text-white mr-6">
+  <div class="flex flex-shrink-0 items-center text-white">
     <div class="w-8">
       <svg class="fill-current text-gray-200 inline-block h-8 w-8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 118.4 135" style="enable-background:new 0 0 118.4 135;" xml:space="preserve">
                   <path d="M118.3,98.3l0-62.3l0-0.2c-0.1-1.6-1-3-2.3-3.9c-0.1,0-0.1-0.1-0.2-0.1L61.9,0.8c-1.7-1-3.9-1-5.4-0.1l-54,31.1
