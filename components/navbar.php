@@ -11,7 +11,8 @@
 isDirect();
 
 ?>
-<nav class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head">
+<nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
+  <?php imagickCheck() ?>
   <!-- Right -->
   <div class="flex flex-shrink-0 items-center text-white mr-6">
     <div class="w-8">
@@ -32,14 +33,7 @@ isDirect();
     </div>
   </div>
   <!-- Search Box -->
-  <div class="flex items-center flex-shrink-0 text-white ml-10">
-    <div class="search-box rounded-full bg-gray-700">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-3 inline-block" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-      </svg>
-      <input type="text" name="keywords" class="ml-1 inline-block bg-transparent w-11/12" placeholder="search"/>
-    </div>
-  </div>
+  <Searchbox></Searchbox>
   <!-- Left -->
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm font-semibold lg:flex-grow text-right">
@@ -52,3 +46,6 @@ isDirect();
     </div>
   </div>
 </nav>
+<section id="advanceSearch">
+  <Advancesearch></Advancesearch>
+</section>

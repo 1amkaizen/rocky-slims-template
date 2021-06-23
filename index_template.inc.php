@@ -13,6 +13,9 @@
 // require helper
 require_once __DIR__ . '/tools/helper.php';
 
+// set custom rest
+registerRest();
+
 // check direct
 isDirect();
 

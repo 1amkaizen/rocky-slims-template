@@ -12,7 +12,7 @@ isDirect();
 
 ?>
 <!-- First Content -->
-<section class="flex flex-wrap h-screen">
+<section id="landingPage" class="flex flex-wrap h-screen">
     <aside class="w-2-5/12 bg-blue-500">
         <div class="fixed top-20 w-2-5/12">
             <ul class="p-0">
@@ -32,8 +32,10 @@ isDirect();
             </div>
             <div class="h-64 mt-0 p-4">
                 <h3 class="border-b-2 border-blue-500 w-fit">New Book</h3>
+                <!-- New -->
+                <Newbook :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Newbook>
             </div>
-            <div class="h-64 mt-0 p-4">
+            <div class="h-64 mt-5 p-4">
                 <h3 class="border-b-2 border-blue-500 w-fit">New Book</h3>
             </div>
         </div>

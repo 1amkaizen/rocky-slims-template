@@ -12,31 +12,37 @@ function tarsiusUrl(string $additionalUrl, string $template = 'rocky'): string
     return SWB . 'template/'.$template.'/' .$additionalUrl;
 }
 
-function tarsiusLoad(string $path, string $type = 'include'): void
+function tarsiusLoad($path, string $type = 'include'): void
 {
     global $sysconf,$page_title,$metadata,
            $header_info,$search_result_info,
            $main_content,$image_src,$notes,$subject;
+    
+    if (!is_array($path))
+    {
+        $path = [$path];
+    }
 
-    switch ($type) {
-        case 'include':
-            include $path;
-            break;
-
-        case 'include_once':
-            include_once $path;
-            break;
-
-        case 'require':
-            require $path;
-            break;
-        case 'require_once':
-            require_once $path;
-            break;
+    foreach ($path as $key => $file) {
+        if (file_exists($file))
+        {
+            switch ($type) {
+                case 'include':
+                    include $file;
+                    break;
         
-        default:
-            # code...
-            break;
+                case 'include_once':
+                    include_once $file;
+                    break;
+        
+                case 'require':
+                    require $file;
+                    break;
+                case 'require_once':
+                    require_once $file;
+                    break;
+            }
+        }            
     }
 }
 
@@ -165,9 +171,52 @@ function jsonOneQuotes($mixData)
     return str_replace('"', '\'', json_encode($mixData));
 }
 
+function jsonResponse($mix)
+{
+    header('Content-Type: application/json');
+    echo json_encode($mix);
+    exit;
+}   
+
 function conditionComponent($dir, $arrayComponents)
 {
     foreach ($arrayComponents as $components) {
         if (isset($_GET['p']) && ($components === $_GET['p']) && file_exists($dir.'/'.$components.'.php')) tarsiusLoad($dir.'/'.$components.'.php');
     }
+}
+
+function registerRest()
+{
+    global $sysconf;
+
+    $routes = SB . 'api/v' . $sysconf['api']['version'] . '/routes.php';
+    $getRoutesString = file_get_contents($routes);
+    
+    // header('Content-Type: text/plain'); // just for debugging
+    // echo $getRoutesString;
+    // exit;
+    if (!preg_match('/(Rocky Routes)/', $getRoutesString))
+    {
+        // set variable
+        $target = '$router->setBasePath(\'api\');';
+        $replaceWith = "$target\n\n/*----------  Rocky Routes  ----------*/\nif (file_exists(SB . 'template/rocky/rest/routes.php')) require SB . 'template/rocky/rest/routes.php';";
+        // go replace
+        $modify = str_replace($target, $replaceWith, $getRoutesString);
+
+        // put contents
+        file_put_contents($routes, $modify);
+    }
+}
+
+function imagickCheck()
+{
+    if (!class_exists('Imagick'))
+    {
+        echo <<<HTML
+            <!-- Imagick -->
+            <div class="w-full block p-2 mb-2 rounded-lg text-white bg-red-500">
+                <strong>Ekstensi Imagick belum terinstall, segera install agar template dapat mengelola gambar dengan baik.</strong>
+            </div>
+        HTML;
+    }  
 }

@@ -115,6 +115,7 @@ $cssMap = [
     ['href' => tarsiusUrl('assets/css/tailwind.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/css/bootstrap.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/css/animate.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
+    ['href' => tarsiusUrl('assets/js/lib/splide/css/splide.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl(versioning('assets/css/app.css')), 'rel' => 'stylesheet', 'type' => 'text/css'],
 ];
 
