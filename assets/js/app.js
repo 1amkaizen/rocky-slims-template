@@ -6,7 +6,7 @@ function isSelectorActive(selector)
 
 
 // Components
-import {Newbook} from './components/splide/index.js'
+import {Newbook, Popular} from './components/splide/index.js'
 import {Searchbox, Advancesearch} from './components/ui/index.js'
 
 // import mixin
@@ -22,7 +22,8 @@ if (isSelectorActive('#landingPage'))
     const landingPage = new Vue({
         el: '#landingPage',
         components: {
-            Newbook
+            Newbook,
+            Popular
         }
     })
 }

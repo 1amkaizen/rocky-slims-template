@@ -53,7 +53,7 @@ export default {
     methods: {
         async createSlide()
         {
-            await fetch('?p=api/newbook')
+            await fetch('?p=api/popularbook')
                 .then(response => response.json())
                 .then(result => {
                     if (result.length > 0)

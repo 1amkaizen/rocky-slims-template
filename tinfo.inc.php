@@ -12,9 +12,10 @@ $sysconf['template']['responsive'] = true;
 
 // set rocky template info
 $sysconf['template']['rocky_newbook'] = 1;
+$sysconf['template']['rocky_carousell_height_class'] = 'h-40';
 $sysconf['template']['rocky_carousell_limit'] = 16;
 $sysconf['template']['rocky_carousell_type'] = 'loop'; // options slide
-$sysconf['template']['rocky_carousell_show'] = 7; // if you use loop type
+$sysconf['template']['rocky_carousell_show'] = 8; // if you use loop type
 $sysconf['template']['rocky_carousell_gap'] = '1em'; // if you use loop type
 $sysconf['template']['rocky_carousell_autoplay'] = true;
 
@@ -49,6 +50,12 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
             [1, __('Show')],
             [0, __('Hide')]
         ]
+    ],
+    'carousell-height' => [
+        'dbfield' => 'rocky_carousell_height_class',
+        'label' => 'CSS class to define height cover (https://tailwindcss.com/docs/height)',
+        'type' => 'text',
+        'default' => 'h-40'
     ],
     'carousell-limit' => [
         'dbfield' => 'rocky_newbook_limit',

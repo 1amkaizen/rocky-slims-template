@@ -31,12 +31,14 @@ isDirect();
                 <small class="block text-gray-100 text-center">- Walter Savage Landor </small>
             </div>
             <div class="h-64 mt-0 p-4">
-                <h5 class="border-b-2 border-blue-500 w-fit -zi-3">New Book</h5>
+                <h5 class="border-b-2 border-blue-500 w-fit -zi-3">Buku Terbaru</h5>
                 <!-- New -->
-                <Newbook :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Newbook>
+                <Newbook :cover-height="'<?= $sysconf['template']['rocky_carousell_height_class'] ?>'" :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Newbook>
             </div>
             <div class="h-64 mt-5 p-4">
-                <h5 class="border-b-2 border-blue-500 w-fit">New Book</h5>
+                <h5 class="border-b-2 border-blue-500 w-fit">Buku Populer</h5>
+                <!-- Popular -->
+                <Popular :cover-height="'<?= $sysconf['template']['rocky_carousell_height_class'] ?>'" :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Popular>
             </div>
         </div>
     </div>

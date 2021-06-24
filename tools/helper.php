@@ -220,3 +220,15 @@ function imagickCheck()
         HTML;
     }  
 }
+
+function getLogo()
+{
+    global $sysconf;
+
+    if (isset($sysconf['logo_image']) && $sysconf['logo_image'] != '' && file_exists('images/default/'.$sysconf['logo_image']))
+    {
+        return SWB . 'images/default/'.$sysconf['logo_image'];
+    }
+
+    return null;
+}

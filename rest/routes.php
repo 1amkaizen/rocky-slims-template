@@ -12,6 +12,7 @@ tarsiusLoad($controllers, 'require');
 
 // get new book
 $router->map('GET', '/newbook', 'RockyBiblio@getLatest');
+$router->map('GET', '/popularbook', 'RockyBiblio@getPopular');
 
 // get book image
 $router->map('GET', '/cover/book/[i:w]/[i:h]/[*:filename]', 'RockyImage@stream');

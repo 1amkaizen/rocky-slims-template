@@ -95,3 +95,9 @@ body {
 .-zi-3 {
     z-index: -3;
 }
+
+.closeAdvs {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
