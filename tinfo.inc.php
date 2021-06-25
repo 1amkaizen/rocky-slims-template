@@ -8,7 +8,7 @@
  */
 
 $sysconf['template']['base'] = 'php';
-$sysconf['template']['responsive'] = true;
+$sysconf['template']['responsive'] = false;
 
 // set rocky template info
 $sysconf['template']['rocky_newbook'] = 1;
@@ -47,8 +47,8 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
         'type' => 'dropdown',
         'default' => 1,
         'data' => [
-            [1, __('Show')],
-            [0, __('Hide')]
+            [1, __('Yes')],
+            [0, __('No')]
         ]
     ],
     'carousell-height' => [
@@ -78,7 +78,7 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
     'carousell-type' => [
         'dbfield' => 'rocky_newbook_type',
         'label' => 'Type of slider',
-        'type' => 'text',
+        'type' => 'dropdown',
         'default' => 'loop',
         'data' => [
             ['loop', __('Loop')],

@@ -232,3 +232,14 @@ function getLogo()
 
     return null;
 }
+
+function fetchData(object $obj)
+{
+    $result = [];
+
+    while ($data = $obj->fetch(PDO::FETCH_ASSOC)) {
+        $result[] = $data;
+    }
+
+    return $result;
+}

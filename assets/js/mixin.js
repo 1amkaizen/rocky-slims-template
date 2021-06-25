@@ -44,6 +44,33 @@ export default {
                     return curtop;
             }
         },
+        setLastKeywords(keywords)
+        {
+            if (localStorage.getItem('lastKeywords') === null)
+            {
+                localStorage.setItem('lastKeywords', JSON.stringify([]))
+            }
+            
+            let lastKeywords = JSON.parse(localStorage.getItem('lastKeywords'))
+            
+            if (lastKeywords.length > 0)
+            {
+                lastKeywords.forEach(keyword => {
+                    if (keyword !== keywords.replace(/[^A-Za-z\s+]/gi, ''))
+                    {
+                        // set up keywords
+                        lastKeywords.push(keywords)
+                    }
+                });
+            }
+            else
+            {
+                lastKeywords.push(keywords)
+            }
+
+            // store again
+            localStorage.setItem('lastKeywords', JSON.stringify(lastKeywords))
+        },
         removePreloader()
         {
             // Loader
