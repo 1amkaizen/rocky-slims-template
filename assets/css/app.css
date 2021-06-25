@@ -56,6 +56,13 @@ body {
     background-position: center center;
 }
 
+.login-screen {
+    background: linear-gradient(to bottom,rgb(25 25 25 / 44%) 0,rgb(173 173 173 / 21%) 100%),url(../images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
 .brand {
     font-family: 'Questrial', sans-serif;
 }

@@ -23,15 +23,21 @@ export default {
         },
         thumbUrl(fileName)
         {
-            return `index.php?p=api/cover/book/250/600/${fileName}`
+            let fixFileName = fileName
+            
+            if (fileName === '')
+            {
+                fixFileName = 'image.png'
+            }
+            return `index.php?p=api/cover/book/250/600/${fixFileName}`
         },
         onClick(ev) {
 
         },
-        scrolling(selector)
+        scrolling(height)
         {
             scroll({
-                top: (this.findPos(document.querySelector(selector)) - 150),
+                top: height,
                 behavior: 'smooth'
             });
         },
@@ -52,20 +58,19 @@ export default {
             }
             
             let lastKeywords = JSON.parse(localStorage.getItem('lastKeywords'))
-            
-            if (lastKeywords.length > 0)
+            let escapeKeyword = keywords.replace(/[^A-Za-z0-9:\s+]/g, '')
+
+            let isSetLastKeyword = false
+            lastKeywords.forEach(word => {
+                if (keywords === word)
+                {
+                    isSetLastKeyword = true
+                }
+            })
+
+            if (!isSetLastKeyword)
             {
-                lastKeywords.forEach(keyword => {
-                    if (keyword !== keywords.replace(/[^A-Za-z\s+]/gi, ''))
-                    {
-                        // set up keywords
-                        lastKeywords.push(keywords)
-                    }
-                });
-            }
-            else
-            {
-                lastKeywords.push(keywords)
+                lastKeywords.push(escapeKeyword)
             }
 
             // store again
@@ -100,6 +105,14 @@ export default {
         qSelectAll(selector)
         {
             return this.doc.querySelectorAll(selector)
+        },
+        checkProp(obj, prop)
+        {
+            if (typeof obj === 'object')
+            {
+                return obj.hasOwnProperty(prop)
+            }
+            return false
         }
     },
     mounted() {

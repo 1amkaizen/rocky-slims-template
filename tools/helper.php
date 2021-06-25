@@ -7,8 +7,11 @@
  * @desc [description]
  */
 
-function tarsiusUrl(string $additionalUrl, string $template = 'rocky'): string
+function tarsiusUrl(string $additionalUrl): string
 {
+    global $sysconf;
+    
+    $template = $sysconf['template']['theme'];
     return SWB . 'template/'.$template.'/' .$additionalUrl;
 }
 

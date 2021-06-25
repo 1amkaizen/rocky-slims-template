@@ -14,7 +14,7 @@ isDirect();
 <nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
   <?php imagickCheck() ?>
   <!-- Right -->
-  <div class="flex flex-shrink-0 items-center text-white">
+  <div onclick="location.href = './'" class="flex flex-shrink-0 items-center text-white cursor-pointer">
     <div class="w-8">
       <?php if (!is_null(getLogo())): ?>
         <img src="<?= getLogo() ?>" class="inline-block h-8 w-8"/>
@@ -41,11 +41,11 @@ isDirect();
   <!-- Left -->
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm font-semibold lg:flex-grow text-right">
-      <a href="#responsive-header" class="border-b-2 border-gray-500 hover:text-white no-underline block lg:inline-block text-gray-200 lg:mt-0 lg:mr-4">
-        <?= __('Home') ?>
+      <a href="./" class="<?= (!count($_GET)) ? 'border-b-2 border-gray-500' : null ?> hover:text-white no-underline block lg:inline-block text-gray-200 lg:mt-0 lg:mr-4">
+        <?= t('Home') ?>
       </a>
-      <a href="#responsive-header" class="text-gray-200 hover:text-white no-underline block lg:inline-block lg:mt-0 lg:mr-4">
-        <?= __('Member Area') ?>
+      <a href="?p=member" class="<?= (isset($_GET['p']) && $_GET['p'] === 'member') ? 'border-b-2 border-gray-500' : null ?> text-gray-200 hover:text-white no-underline block lg:inline-block lg:mt-0 lg:mr-4">
+        <?= t('Member Area') ?>
       </a>
     </div>
   </div>

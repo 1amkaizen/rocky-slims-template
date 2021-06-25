@@ -15,12 +15,23 @@
          {
             $file = SB . 'images/docs/' . basename($fileName);
 
+            if (!file_exists($file))
+            {
+                $file = SB . 'images/default/image.png';
+            }
+
             $image = new Imagick($file);
             $image->stripImage();
             $image->scaleImage($width, $height, true);
 
             header('Content-type: '.mime_content_type($file));
             echo $image->getImageBlob();
+         }
+         else
+         {
+             $file = LIB . 'minigalnano/wrongcontenttype.png';
+             header('Content-type: '.mime_content_type($file));
+             echo file_get_contents($file);
          }
      }
  }

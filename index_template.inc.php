@@ -12,6 +12,7 @@
 
 // require helper
 require_once __DIR__ . '/tools/helper.php';
+require_once __DIR__ . '/tools/translate.php';
 
 // set custom rest
 registerRest();
@@ -21,7 +22,7 @@ isDirect();
 
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="<?= $sysconf['default_lang'] ?>">
     <head>
         <?php tarsiusLoad(__DIR__ . '/components/meta.php'); ?>   
     </head>

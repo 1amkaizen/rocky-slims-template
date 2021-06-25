@@ -26,17 +26,17 @@ isDirect();
     <div class="w-9-5/12 mb-4">
         <div class="grid grid-cols-1 gap-0">
             <div class="banner h-64 mt-16 in-zi">
-                <h1 class="brand font-bold text-center text-gray-100 mt-24 mb-0 shadow-2xl">OPAC</h1>
+                <h1 class="brand font-bold text-center text-gray-100 mt-20 mb-0 shadow-2xl">OPAC</h1>
                 <span class="block text-center text-gray-100">"Nothing is pleasanter than exploring a library."</span>
                 <small class="block text-gray-100 text-center">- Walter Savage Landor </small>
             </div>
             <div class="h-64 mt-0 p-4">
-                <h5 class="border-b-2 border-blue-500 w-fit -zi-3">Buku Terbaru</h5>
+                <h5 class="border-b-2 border-blue-500 w-fit -zi-3"><?= t('New Book') ?></h5>
                 <!-- New -->
                 <Newbook :cover-height="'<?= $sysconf['template']['rocky_carousell_height_class'] ?>'" :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Newbook>
             </div>
             <div class="h-64 mt-5 p-4">
-                <h5 class="border-b-2 border-blue-500 w-fit">Buku Populer</h5>
+                <h5 class="border-b-2 border-blue-500 w-fit"><?= t('Popular Book') ?></h5>
                 <!-- Popular -->
                 <Popular :cover-height="'<?= $sysconf['template']['rocky_carousell_height_class'] ?>'" :per-show="<?= $sysconf['template']['rocky_carousell_show'] ?>" :auto-play="<?= !$sysconf['template']['rocky_carousell_autoplay'] ? 'false' : 'true' ?>" :slider-type="'<?= $sysconf['template']['rocky_carousell_type'] ?>'" :slider-gap="'<?= $sysconf['template']['rocky_carousell_gap'] ?>'"></Popular>
             </div>
