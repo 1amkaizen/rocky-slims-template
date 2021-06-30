@@ -19,7 +19,8 @@ function tarsiusLoad($path, string $type = 'include'): void
 {
     global $sysconf,$page_title,$metadata,
            $header_info,$search_result_info,
-           $main_content,$image_src,$notes,$subject;
+           $main_content,$image_src,$notes,$subject,
+           $available_languages;
     
     if (!is_array($path))
     {
@@ -245,4 +246,48 @@ function fetchData(object $obj)
     }
 
     return $result;
+}
+
+function setLangFlag(string $lang)
+{
+    global $sysconf;
+
+    $fixLang = strtolower(substr($lang, 3,2));
+    $filePath = SB.'template/default/assets/flags/4x3/' . $fixLang . '.svg';
+
+    if (file_exists($filePath))
+    {
+        $rawImage = file_get_contents($filePath);
+
+        return str_replace('id="flag-icon-css-us"', 'class="inline-block w-5 h-5"', $rawImage);
+    }
+}
+
+function setLangFlagList(string $defaultLang, array $available_languages)
+{
+    global $sysconf;
+    
+    $Lang = [];
+
+    foreach ($available_languages as $idLang => $lang) {
+        if ($lang[0] !== $defaultLang)
+        {
+            $Lang[] = ['code' => $lang[0], 'icon' => strtolower(substr($lang[0], 3,2)), 'label' => $lang[1]];
+        }
+    }
+
+    return $Lang;
+}
+
+function shortCutWord(string $sentence, int $limitWord = 3)
+{
+    $modify = explode(' ', $sentence);
+    
+    $fix = [];
+
+    for ($word=0; $word < $limitWord; $word++) { 
+        $fix[] = $modify[$word];
+    }
+
+    return implode(' ', $fix);
 }

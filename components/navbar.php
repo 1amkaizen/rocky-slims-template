@@ -10,6 +10,12 @@
 // Check direct access
 isDirect();
 
+// default Lang
+$defaultLang = (isset($_COOKIE['select_lang'])) ? $_COOKIE['select_lang'] : $sysconf['default_lang'];
+
+// set json lang
+$jsonLang = str_replace('"', '\'', json_encode(setLangFlagList($defaultLang, $available_languages)));
+
 ?>
 <nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
   <?php imagickCheck() ?>
@@ -41,12 +47,16 @@ isDirect();
   <!-- Left -->
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm font-semibold lg:flex-grow text-right">
-      <a href="./" class="<?= (!count($_GET)) ? 'border-b-2 border-gray-500' : null ?> hover:text-white no-underline block lg:inline-block text-gray-200 lg:mt-0 lg:mr-4">
-        <?= t('Home') ?>
+      <a href="?p=member" title="Login" class="text-gray-200 hover:text-white no-underline block lg:inline-block lg:mt-0 lg:mr-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="inline-block text-gray-200" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+        <?php if (utility::isMemberLogin()): ?>
+          <span class="inline-block mx-1"><?= shortCutWord($_SESSION['m_name'], 1) ?></span>
+        <?php endif; ?>
       </a>
-      <a href="?p=member" class="<?= (isset($_GET['p']) && $_GET['p'] === 'member') ? 'border-b-2 border-gray-500' : null ?> text-gray-200 hover:text-white no-underline block lg:inline-block lg:mt-0 lg:mr-4">
-        <?= t('Member Area') ?>
-      </a>
+      <Lang default-flag="<?= strtolower(substr($defaultLang, 3,2)) ?>" list-other-lang="'<?= $jsonLang ?>'"></Lang>
     </div>
   </div>
 </nav>

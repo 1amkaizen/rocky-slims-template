@@ -10,16 +10,29 @@
 // Check direct access
 isDirect();
 
+$sidebar = [
+    [SWB.'?p=libinfo', __('Information')],
+    [SWB.'?p=news', __('News')],
+    [SWB.'?p=help', __('Help')],
+    [SWB.'?p=librarian', __('Librarian')]
+];
+
 ?>
 <!-- First Content -->
 <section id="landingPage" class="flex flex-wrap h-screen">
     <aside class="in-zi w-2-5/12 bg-blue-500">
         <div class="in-zi fixed top-20 w-2-5/12">
             <ul class="p-0">
-                <li class="antialiased hover:bg-blue-100 hover:text-blue-500 rounded-full text-gray-100 px-3 py-2 mx-1 cursor-pointer"><?= __('Information') ?></li>
-                <li class="antialiased hover:bg-blue-100 hover:text-blue-500 rounded-full text-gray-100 px-3 py-2 mx-1 cursor-pointer"><?= __('News') ?></li>
-                <li class="antialiased hover:bg-blue-100 hover:text-blue-500 rounded-full text-gray-100 px-3 py-2 mx-1 cursor-pointer"><?= __('Help') ?></li>
-                <li class="antialiased hover:bg-blue-100 hover:text-blue-500 rounded-full text-gray-100 px-3 py-2 mx-1 cursor-pointer"><?= __('Librarian') ?></li>
+                <?php foreach($sidebar as $menu): ?>
+                <li>
+                    <a class="antialiased hover:bg-blue-100 hover:text-blue-500 block rounded-full text-gray-100 px-3 py-2 mx-1 cursor-pointer no-underline" href="<?= $menu[0] ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <?= $menu[1] ?>
+                    </a>
+                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </aside>

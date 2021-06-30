@@ -3,7 +3,13 @@
 isDirect();
 
 // load lang
-$lang = $sysconf['default_lang'];
+$lang = (isset($_COOKIE['select_lang'])) ? $_COOKIE['select_lang'] : $sysconf['default_lang'];
+
+if (!file_exists(__DIR__ . '/../lang/' . $lang . '/' . $lang .'.php'))
+{
+    $lang = 'en_US';
+}
+
 include __DIR__ . '/../lang/' . $lang . '/' . $lang .'.php';
 
 /**
