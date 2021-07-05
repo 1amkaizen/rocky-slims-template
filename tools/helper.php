@@ -20,7 +20,7 @@ function tarsiusLoad($path, string $type = 'include'): void
     global $sysconf,$page_title,$metadata,
            $header_info,$search_result_info,
            $main_content,$image_src,$notes,$subject,
-           $available_languages;
+           $available_languages,$message,$msg;
     
     if (!is_array($path))
     {
@@ -184,8 +184,20 @@ function jsonResponse($mix)
 
 function conditionComponent($dir, $arrayComponents)
 {
+    global $main_content;
+
+    $match = false;
     foreach ($arrayComponents as $components) {
-        if (isset($_GET['p']) && ($components === $_GET['p']) && file_exists($dir.'/'.$components.'.php')) tarsiusLoad($dir.'/'.$components.'.php');
+        if (isset($_GET['p']) && ($components === $_GET['p']) && file_exists($dir.DS.$components.'.php')) 
+        {
+            $match = true; 
+            tarsiusLoad($dir.DS.$components.'.php');
+        }
+    }
+
+    if (!$match)
+    {
+        echo $main_content;
     }
 }
 
@@ -290,4 +302,14 @@ function shortCutWord(string $sentence, int $limitWord = 3)
     }
 
     return implode(' ', $fix);
+}
+
+function getMemberPhotoProfileSrc()
+{
+    if (isset($_SESSION['m_image']) && file_exists(IMGBS.'persons'.DS.basename($_SESSION['m_image'])))
+    {
+        return SWB . 'images/persons/' . basename($_SESSION['m_image']);
+    }
+    // set base image
+    return SWB . 'images/persons/avatar.jpg';
 }

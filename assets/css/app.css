@@ -16,8 +16,26 @@
     height: 4px;
 }
 
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: rgba(59,130,246,var(--tw-bg-opacity));
+  }
+  
+  ::selection {
+    color: white;
+    background: rgba(59,130,246,var(--tw-bg-opacity));
+  }
+
 body {
     font-family: 'Quicksand', sans-serif;
+}
+
+.book-title {
+    font-family: 'Kanit', sans-serif;
+}
+
+.rocky-base-bg-color {
+    background-color: rgba(59,130,246,var(--tw-bg-opacity));
 }
 
 .rocky-head {
@@ -111,4 +129,99 @@ body {
 
 a {
     color: white
+}
+
+.xmlResultLink,.jsonResultLink {
+    padding-right: 5px
+}
+
+span.pagingList {
+    width: 30%;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    display: block
+}
+
+span.pagingList > b {
+    background-color: rgba(59,130,246,var(--tw-bg-opacity));
+    color: white;
+    border: none !important;
+    padding: 12px !important;
+    border-radius: 5px;
+}
+
+span.pagingList > a {
+    color: #383838;
+    text-decoration: none;
+    padding: 10px;
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+span.pagingList > a:hover {
+    background-color: rgba(59,130,246,var(--tw-bg-opacity));
+    color: white;
+    border: none !important;
+    padding: 12px !important;
+}
+
+.text-author > a {
+    color: black !important;
+    text-decoration: none;
+}
+
+.text-author > a:hover {
+    color: rgba(59,130,246,var(--tw-bg-opacity)) !important;
+    text-decoration: none;
+}
+
+.modal-open {
+    display: block !important;
+}
+
+.memberForm > input {
+    outline-style: none;
+}
+
+input[name="markBiblio"] {
+    padding: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    background-color: #0071e4;
+    color: white;
+    border-radius: 5px;
+}
+
+.errorBox {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    text-align: justify;
+    margin: 5px 0 5px 0;
+}
+
+.biblioMarkFormAction {
+    display: none;
+}
+
+tr.dataListHeader {
+    background-color: #272727;
+}
+
+tr.dataListHeader > td > a {
+    text-decoration: none;
+}
+
+tr.alterCell > td > a {
+    text-decoration: none;
+    color: #272727
+}
+
+tr.alterCell2 > td > a {
+    text-decoration: none;
+    color: #272727
 }

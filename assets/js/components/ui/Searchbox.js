@@ -40,7 +40,7 @@ export default {
         },
         setKeywords(e)
         {
-            if (e.key === 'Enter')
+            if (e.key === 'Enter' && e.target.value.length > 0)
             {
                 // set last keywords
                 this.setLastKeywords(e.target.value)

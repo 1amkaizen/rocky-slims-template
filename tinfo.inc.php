@@ -12,6 +12,7 @@ $sysconf['template']['responsive'] = false;
 
 // set rocky template info
 $sysconf['template']['rocky_newbook'] = 1;
+$sysconf['template']['rocky_library_subname'] = 1;
 $sysconf['template']['rocky_carousell_height_class'] = 'h-40';
 $sysconf['template']['rocky_carousell_limit'] = 16;
 $sysconf['template']['rocky_carousell_type'] = 'loop'; // options slide
@@ -29,6 +30,16 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
         'data' => [
             [1, __('Yes, please!')],
             [0, __('No, I want use lighweight theme')]
+        ]
+    ],
+    'library_subname' => [
+        'dbfield' => 'rocky_library_subname',
+        'label' => 'Active library subname?',
+        'type' => 'dropdown',
+        'default' => 1,
+        'data' => [
+            [1, __('Show')],
+            [0, __('Hide')]
         ]
     ],
     'newbook' => [

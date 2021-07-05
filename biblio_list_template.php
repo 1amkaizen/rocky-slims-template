@@ -81,7 +81,15 @@ function biblio_list_format($dbs, $biblio_detail, $n, $settings = array(), &$ret
   // card
   include __DIR__.'/components/card.php';
 
+  // set divider on the top before content
+  if ($n === 0) $output .= '<div class="h-auto mb-3 grid grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">';
+  
+  // set content
   $output .= $card;
+  
+  // set divider on the bottom before content
+  if (($n + 1) === $settings['resultset']->num_rows) $output .= '</div>';
+  
   // debug
   // $output .= '<code>'.json_encode($biblio_detail).'</code>';
 

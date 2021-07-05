@@ -7,7 +7,7 @@ export default {
             boxMt: 'md:mt-14 lg:mt-14 xl:mt-14',
             boxMt2: '',
             totalReserve: (localStorage.getItem('reservationBook') !== null) ? JSON.parse(localStorage.getItem('reservationBook')).length : 0,
-            reserveTotal: true
+            reserveTotal: true,
         }
     },
     methods:
@@ -52,6 +52,11 @@ export default {
         },
         setLastKeywords(keywords)
         {
+            if (keywords.length === 0)
+            {
+                return
+            }
+            
             if (localStorage.getItem('lastKeywords') === null)
             {
                 localStorage.setItem('lastKeywords', JSON.stringify([]))

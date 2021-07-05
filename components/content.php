@@ -10,23 +10,43 @@
 // Check direct access
 isDirect();
 
+// set page title
+$page_title = __('Collections');
+// set class
+$class =  (!isset($_GET['p'])) ? 'class="flex flex-wrap h-screen"' : null;
 ?>
+
 <!-- App detail -->
-<div id="appDetail" class="h-auto flex flex-wrap lg:w-10/12 mx-auto block">
-    <?php if (!isset($_GET['p'])): ?>
-        <div class="w-full lg:w-3/12 p-3 mt-3">
+<div id="appDetail" <?= $class ?>>
+<?php if (!isset($_GET['p'])): ?>
+    <aside class="in-zi w-2-5/12 bg-blue-500">
+        <div class="in-zi fixed top-20 w-2-5/12 px-4 py-2 text-white">
             <h3 class="mb-3"><?= __('Search Result') ?></h3>
             <?= $search_result_info; ?>
         </div>
-        <div class="w-full lg:w-9/12 mb-5 p-8">
-            <?php
-                if (strlen($main_content) !== 7):
-                    echo $main_content;
-                else:
-                    echo '<h3 class="text-red-500">' . __('No Result') . '</h3>';
-                    echo '<p class="text-red-500">' . __('Please try again') . '</p>';
-                endif;
-            ?>
+    </aside>
+    <div class="w-9-5/12 mb-4">
+        <div class="grid grid-cols-1 gap-0">
+            <div class="banner h-20 mt-16 in-zi">
+                <span class="block text-center text-gray-100 mt-4 ml-10 uppercase"><?= $page_title ?></span>
+            </div>
+            <div class="mt-0 p-4">
+                <?php
+                    if (strlen($main_content) !== 7):
+                        echo $main_content;
+                    else:
+                        echo '<h3 class="text-red-500">' . __('No Result') . '</h3>';
+                        echo '<p class="text-red-500">' . __('Please try again') . '</p>';
+                    endif;
+                ?>
+            </div>
         </div>
-    <?php endif; ?>
+    </div>
+<?php 
+else: 
+    conditionComponent(__DIR__, ['member']);
+endif;
+?>
+    <!-- Modal -->
+    <Modal v-if="showModal" :modal-attribute="modalAttribute"></Modal>
 </div>
