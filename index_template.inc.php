@@ -24,7 +24,12 @@ isDirect();
 <!DOCTYPE html>
 <html lang="<?= $sysconf['default_lang'] ?>">
     <head>
-        <?php tarsiusLoad(__DIR__ . '/components/meta.php'); ?>   
+        <?php 
+            // load meta
+            tarsiusLoad(__DIR__ . '/components/meta.php'); 
+            // session remove basket
+            removeSessionBasket();
+        ?>   
     </head>
     
     <body class="bg-gray-100">

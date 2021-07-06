@@ -30,14 +30,15 @@ $tabs_menus = [
     </div>
     <div class="grid grid-cols-1 gap-0">
         <img class="w-28 h-28 rounded-full mt-10 mx-auto block" src="<?= getMemberPhotoProfileSrc() ?>"/>
+        <h5 class="text-center mt-3"><?= $_SESSION['m_name'] ?></h5>
     </div>
     <div class="tab-result w-8/12 mt-5 mx-auto block">
         <!-- Button tabs -->
         <?php foreach($tabs_menus as $key => $menu): ?>
-            <a href="<?= $menu['link'] ?>" class="<?= ($section === $key) ? 'active bg-blue-600 text-white' : 'bg-gray-200 text-gray-600' ?> mb-3 py-2 px-3 no-underline"><?= $menu['text'] ?></a>
+            <a href="<?= $menu['link'] ?>" class="<?= ($section === $key) ? 'active bg-blue-600 text-white' : 'bg-gray-200 text-gray-600' ?> rounded-md mb-3 py-2 px-3 no-underline"><?= $menu['text'] ?></a>
         <?php endforeach; ?>
         <!-- Logout -->
-        <a href="?p=member&logout=1" class="bg-red-600 text-white px-3 py-2 mb-3 no-underline float-right"><?= __('Logout') ?></a>
+        <a href="?p=member&logout=1" class="bg-red-600 text-white px-3 py-2 mb-3 no-underline rounded-md float-right"><?= __('Logout') ?></a>
         <!-- set content -->
         <?php
             switch ($section) {
@@ -48,7 +49,7 @@ $tabs_menus = [
                     break;
                 case 'title_basket':
                     echo '<div class="memberProfile mt-8 w-full">';
-                    echo showBasket();
+                    echo '<Basketlist num-label="' . __('title(s) on basket') . '" btn-reserve-label="' . __('Reserve title(s) on Basket') . '" btn-reserve-clear="' . __('Clear Basket') . '" btn-reserve-remove="' . __('Remove selected title(s) from Basket') . '"><Basketlist/>';
                     echo '</div>';
                     break;
                 case 'loan_history':

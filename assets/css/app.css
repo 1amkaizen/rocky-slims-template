@@ -26,6 +26,8 @@
     background: rgba(59,130,246,var(--tw-bg-opacity));
   }
 
+html, body {height: 100%;}
+
 body {
     font-family: 'Quicksand', sans-serif;
 }
@@ -224,4 +226,8 @@ tr.alterCell > td > a {
 tr.alterCell2 > td > a {
     text-decoration: none;
     color: #272727
+}
+
+div.locationMap > iframe {
+    border-radius: 10px;
 }

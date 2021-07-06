@@ -40,4 +40,29 @@ class Uimod
         // fetch data
         return fetchData($CollTypeListQuery);
     }
+
+    public static function getBasket()
+    {
+        // make instance
+        $instance = DB::getInstance();
+        // prepare query
+        $query = 'select biblio_id AS \'ID\', title AS \'Title\' from biblio ';
+
+        $criteria = 'biblio_id = 0';
+        if (count($_SESSION['m_mark_biblio']) > 0) {
+            $ids = '';
+            foreach ($_SESSION['m_mark_biblio'] as $biblio) {
+                $ids .= (integer)$biblio . ',';
+            }
+            $ids = substr_replace($ids, '', -1);
+            $criteria = "biblio_id IN ($ids)";
+        }
+    
+        $query .= ' where ' . $criteria . ' order by last_update desc';
+    
+        // run query
+        $runQuery = $instance->query($query);
+    
+        return fetchData($runQuery);
+    }
 }

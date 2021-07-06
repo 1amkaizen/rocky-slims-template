@@ -6,6 +6,8 @@ import Buttontwice from './Buttontwice.js'
 import Buttonbasket from './Buttonbasket.js'
 import Basket from './Basket.js'
 import Modal from './Modal.js'
+import Basketlist from './Basketlist.js'
+import Banner from './Banner.js'
 
 export {
     Searchbox,
@@ -15,5 +17,7 @@ export {
     Buttontwice,
     Buttonbasket,
     Modal,
-    Basket
+    Basket,
+    Basketlist,
+    Banner
 }

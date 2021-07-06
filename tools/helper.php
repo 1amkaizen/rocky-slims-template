@@ -237,6 +237,19 @@ function imagickCheck()
     }  
 }
 
+function curlCheck()
+{
+    if (!function_exists('curl_init'))
+    {
+        echo <<<HTML
+            <!-- Imagick -->
+            <div class="w-full block p-2 mb-2 rounded-lg text-white bg-red-500">
+                <strong>Extension cURL tidak terinstall, install terlebih dahulu ekstensi tersebut agar template dapat berjalan dengan baik.</strong>
+            </div>
+        HTML;
+    }
+}
+
 function getLogo()
 {
     global $sysconf;
@@ -312,4 +325,37 @@ function getMemberPhotoProfileSrc()
     }
     // set base image
     return SWB . 'images/persons/avatar.jpg';
+}
+
+function removeSessionBasket()
+{
+    if (isset($_SESSION['m_mark_biblio']) && count($_SESSION['m_mark_biblio']) === 0)
+    {
+        echo '<script>localStorage.removeItem(\'biblioMark\')</script>';
+    }
+}
+
+function httpRequest($url)
+{
+    // get from https://reqbin.com/req/php/c-1n4ljxb9/curl-get-request-example
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    //for debug only!
+    // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $resp = curl_exec($curl);
+    curl_close($curl);
+    
+    return $resp;
+}
+
+function locationMap($html)
+{
+    // $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
+    $iframeFiltering = strip_tags($html, '<iframe>');
+
+    return $iframeFiltering;
 }

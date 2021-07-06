@@ -18,7 +18,7 @@ $jsonLang = str_replace('"', '\'', json_encode(setLangFlagList($defaultLang, $av
 
 ?>
 <nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
-  <?php imagickCheck() ?>
+  <?php imagickCheck(); curlCheck(); ?>
   <!-- Right -->
   <div onclick="location.href = './'" class="flex flex-shrink-0 items-center text-white cursor-pointer">
     <div class="w-8">

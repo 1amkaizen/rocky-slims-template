@@ -34,4 +34,14 @@ class RockyUi
 
         jsonResponse($list);
     }
+
+    public function basket()
+    {
+        if (isset($_SESSION['m_mark_biblio']))
+        {
+            jsonResponse(Uimod::getBasket());
+        }
+        // no session no data
+        jsonResponse([]);
+    }
 }
