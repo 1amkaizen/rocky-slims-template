@@ -378,10 +378,10 @@ function httpRequest(string $url): string
 
 function locationMap(string $html): string
 {
-    $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
-    $iframeFiltering = strip_tags($removeWidthHeight, '<iframe>');
+    // $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
+    // $iframeFiltering = strip_tags($removeWidthHeight, '<iframe>');
 
-    return $iframeFiltering;
+    return '<iframe src="' . addslashes($html) .' style="border:0;" class="h-64 w-64" allowfullscreen="" loading="lazy"></iframe>';
 }
 
 function dd($mix, $exit = true)

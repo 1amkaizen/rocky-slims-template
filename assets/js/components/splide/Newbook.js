@@ -58,6 +58,7 @@ export default {
                 .then(result => {
                     if (result.length > 0)
                     {
+                        console.log(this.perShow)
                         this.slides = result;
                         setTimeout(() => {
                             new Splide(this.$refs.splide, {
