@@ -17,7 +17,7 @@ isDirect();
 <!DOCTYPE html>
 <html lang="<?= $sysconf['default_lang'] ?>">
     <head>
-        <?php tarsiusLoad(__DIR__ . '/components/meta.php'); ?>   
+        <?php tarsiusLoad(__DIR__ . '/components/meta'); ?>   
     </head>
     <body>
         <section class="flex flex-wrap">

@@ -41,5 +41,5 @@ isDirect();
                 </form>
             </div>
         </div>
-    <?php else: tarsiusLoad(__DIR__ . '/memberProfile.php'); endif; ?>
+    <?php else: tarsiusComponents('memberProfile'); endif; ?>
 </div>

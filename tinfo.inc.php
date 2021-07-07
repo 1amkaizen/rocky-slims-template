@@ -17,6 +17,10 @@ $sysconf['template']['rocky_library_map'] = '<iframe src="https://www.google.com
 $sysconf['template']['rocky_library_map_info'] = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
 $sysconf['template']['rocky_library_services'] = 'Service 1|Service 2|Service 3';
 $sysconf['template']['rocky_library_sub_services'] = 'sub service 1|http://localhost,sub service 2|http://localhost,sub service 3|http://localhost';
+$sysconf['template']['rocky_ig'] = 'http://localhost';
+$sysconf['template']['rocky_fb'] = 'http://localhost';
+$sysconf['template']['rocky_tw'] = 'http://localhost';
+$sysconf['template']['rocky_yt'] = 'http://localhost';
 $sysconf['template']['rocky_carousell_limit'] = 16;
 $sysconf['template']['rocky_carousell_height_class'] = 'h-40';
 $sysconf['template']['rocky_carousell_type'] = 'loop'; // options slide
@@ -77,6 +81,34 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
         'width' => 100,
         'max' => 1000,
         'default' => $sysconf['template']['rocky_library_sub_services']
+    ],
+    'library_ig' => [
+        'dbfield' => 'rocky_fb',
+        'label' => 'Facebook Page',
+        'type' => 'text',
+        'width' => 100,
+        'default' => $sysconf['template']['rocky_fb']
+    ],
+    'library_ig' => [
+        'dbfield' => 'rocky_tw',
+        'label' => 'Twitter Profile',
+        'type' => 'text',
+        'width' => 100,
+        'default' => $sysconf['template']['rocky_tw']
+    ],
+    'library_yt' => [
+        'dbfield' => 'rocky_ig',
+        'label' => 'Youtube Channel',
+        'type' => 'text',
+        'width' => 100,
+        'default' => $sysconf['template']['rocky_yt']
+    ],
+    'library_ig' => [
+        'dbfield' => 'rocky_ig',
+        'label' => 'Instagram Profile',
+        'type' => 'text',
+        'width' => 100,
+        'default' => $sysconf['template']['rocky_ig']
     ],
     'newbook' => [
         'dbfield' => 'rocky_newbook',

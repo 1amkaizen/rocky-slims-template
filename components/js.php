@@ -16,6 +16,7 @@ $vue = (ENVIRONMENT === 'development') ? 'vue' : 'vue.min';
 $jsMap = [
     ["src" => tarsiusUrl("assets/js/$vue.js"), "type" => "text/javascript"],
     ["src" => tarsiusUrl("assets/js/vuex.js"), "type" => "text/javascript"],
+    ["src" => tarsiusUrl("assets/js/vue-toastr-2.min.js"), "type" => "text/javascript"],
     ["src" => tarsiusUrl("assets/js/lib/splide/js/splide.min.js"), "type" => "text/javascript"],
     ["src" => tarsiusUrl(versioning("assets/js/app.js")), "type" => "module"]
 ];

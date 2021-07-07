@@ -95,7 +95,7 @@ $twitter = array_merge($twitter, $twitterCondition);
 $metaEnv = [];
 if (ENVIRONMENT === 'development')
 {
-    // Met environemtn
+    // Met environment
     $metaEnv = [
         '<!-- Meta Environment -->',
         ['name' => 'env', 'content' => ENVIRONMENT]
@@ -116,6 +116,7 @@ $cssMap = [
     ['href' => tarsiusUrl('assets/css/bootstrap.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/css/animate.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/js/lib/splide/css/splide.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
+    ['href' => tarsiusUrl("assets/css/vue-toastr-2.min.css"), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl(versioning('assets/css/app.css')), 'rel' => 'stylesheet', 'type' => 'text/css'],
 ];
 

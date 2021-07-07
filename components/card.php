@@ -44,7 +44,7 @@ ob_start();
         <Buttontwice detailurl="<?= $detail_url ?>" modal-title="<?= __('Citation') ?>" modal-src="index.php?p=cite&id=<?= $biblio_id  ?>"></Buttontwice>
         <?php if (utility::isMemberLogin()): ?>
         <!-- Basket -->
-        <Buttonbasket button-label="<?= __('Add to basket') ?>" biblio-id="<?= $biblio_id  ?>"></Buttonbasket>
+        <Buttonbasket button-label="<?= __('Add to basket') ?>" availibility-item="<?= $availability ?>" biblio-id="<?= $biblio_id  ?>"></Buttonbasket>
         <?php endif; ?>
     </div>
     <!-- Button Twice -->

@@ -21,21 +21,31 @@ registerRest();
 isDirect();
 
 ?>
+<!-- 
+ ____            _          
+|  _ \ ___   ___| | ___   _ 
+| |_) / _ \ / __| |/ / | | |
+|  _ < (_) | (__|   <| |_| |
+|_| \_\___/ \___|_|\_\\__, |
+                      |___/ 
+                    By Drajat Hasan
+ -->
 <!DOCTYPE html>
 <html lang="<?= $sysconf['default_lang'] ?>">
     <head>
         <?php 
             // load meta
-            tarsiusLoad(__DIR__ . '/components/meta.php'); 
+            tarsiusComponents('meta'); 
             // session remove basket
             removeSessionBasket();
         ?>   
     </head>
     
     <body class="bg-gray-100">
+        <!-- Pre Loader -->
         <?php
         // navbar
-        tarsiusLoad(__DIR__ . '/components/navbar.php');
+        tarsiusComponents('navbar');
         ?>
 
         <div>
@@ -43,18 +53,18 @@ isDirect();
             // set content
             if (!isset($_GET['p']) && !isset($_GET['search'])) {
                 // load first content
-                tarsiusLoad(__DIR__ . '/components/landingPage.php');
+                tarsiusComponents('landingPage');
             } 
             else
             {
-                tarsiusLoad(__DIR__ . '/components/content.php');
+                tarsiusComponents('content');
             }
             ?>
         </div>
 
         <?php
         // JS
-        tarsiusLoad(__DIR__.'/components/js.php');
+        tarsiusComponents('js');
         ?>
     </body>
 </html>

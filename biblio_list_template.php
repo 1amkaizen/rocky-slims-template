@@ -87,7 +87,7 @@ function biblio_list_format($dbs, $biblio_detail, $n, $settings = array(), &$ret
   // set content
   $output .= $card;
   
-  // set divider on the bottom before content
+  // set divider on the bottom after content
   if (($n + 1) === $settings['resultset']->num_rows) $output .= '</div>';
   
   // debug

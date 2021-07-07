@@ -11,7 +11,7 @@
 isDirect();
 
 // set page title
-$page_title = __('Collections');
+$pageTitle = __('OPAC');
 // set class
 $class =  (!isset($_GET['p'])) ? 'class="flex flex-wrap h-screen"' : null;
 ?>
@@ -25,10 +25,10 @@ $class =  (!isset($_GET['p'])) ? 'class="flex flex-wrap h-screen"' : null;
             <?= $search_result_info; ?>
         </div>
     </aside>
-    <div class="w-9-5/12 mb-4">
+    <div class="w-9-5/12">
         <div class="grid grid-cols-1 gap-0">
             <div class="banner h-20 mt-16 in-zi">
-                <span class="block text-center text-gray-100 mt-4 ml-10 uppercase"><?= $page_title ?></span>
+                <span class="block text-center text-gray-100 mt-4 ml-10 uppercase"><?= $pageTitle ?></span>
             </div>
             <div class="mt-0 p-4">
                 <?php
@@ -41,10 +41,12 @@ $class =  (!isset($_GET['p'])) ? 'class="flex flex-wrap h-screen"' : null;
                 ?>
             </div>
         </div>
+        <!-- Footer -->
+        <?php tarsiusComponents('footer') ?>
     </div>
 <?php 
 else: 
-    conditionComponent(__DIR__, ['member']);
+    conditionComponent(__DIR__, ['member','show_detail']);
 endif;
 ?>
     <!-- Modal -->

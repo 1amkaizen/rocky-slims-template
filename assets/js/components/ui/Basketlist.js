@@ -5,8 +5,8 @@ const temp = `
         </div>
         <div class="w-full">
             <button class="bg-green-600 hover:bg-green-500 rounded-md py-2 px-3 text-white">{{ btnReserveLabel }}</button>
-            <button class="bg-yellow-600 hover:bg-yellow-500 rounded-md py-2 px-3 text-white">{{ btnReserveClear }}</button>
-            <button class="bg-red-600 hover:bg-red-500 py-2 px-3 rounded-md text-white">{{ btnReserveRemove }}</button>
+            <button v-on:click="clearBasket" class="bg-yellow-600 hover:bg-yellow-500 rounded-md py-2 px-3 text-white">{{ btnReserveClear }}</button>
+            <button v-on:click="removeItemSelected" class="bg-red-600 hover:bg-red-500 py-2 px-3 rounded-md text-white">{{ btnReserveRemove }}</button>
         </div>
         <div class="w-full mt-3">
             <table v-if="lists.length" class="w-full table table-striped table-hover" border="1" style="border-collapse: collapse">
@@ -19,7 +19,7 @@ const temp = `
                 <tbody>
                     <tr v-for="list in lists" class="cursor-pointer">
                         <td class="p-3">
-                            <input type="checkbox" name="basket[]" class="basketItem mx-auto block" :value="list.ID"/>
+                            <input type="checkbox" ref="basket" class="basketItem mx-auto block" :value="list.ID"/>
                         </td>
                         <td class="p-3">
                             {{ list.Title }}
@@ -68,6 +68,47 @@ export default {
                             this.lists = result
                         }
                     })
+        },
+        async clearBasket()
+        {
+            let formData = new FormData();
+            formData.append('clear_biblio', 1)
+
+            await fetch('index.php?p=member', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+
+                if (response.status === 200)
+                {
+                    this.lists = []
+                    this.$store.commit('clearMark')
+                    this.toastr('Berhasil menghapus daftar keranjang', 'Info', 'info')
+                }
+            })
+        },
+        async removeItemSelected()
+        {
+            let formData = new FormData()
+
+            this.$refs.basket.forEach(item => {
+                if (item.checked)
+                {
+                    formData.append('basket[]', item.value)
+                }
+            });
+
+            await fetch('index.php?p=member', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.status === 200)
+                {
+                    this.toastr('Berhasil menghapus daftar keranjang', 'Info', 'info', 'top')
+                }
+            })
         }
     },
     mounted()

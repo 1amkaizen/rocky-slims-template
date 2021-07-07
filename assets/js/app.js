@@ -35,17 +35,23 @@ Vue.mixin(objectMixin)
 
 // set Vuex
 Vue.use(Vuex)
+Vue.use(toastr)
 
 const store = new Vuex.Store({
     state: {
         biblioMark: getMarkNum()
     },
     mutations: {
-        increment (state) {
+        increment(state) {
             state.biblioMark += 1
         },
-        decrement (state) {
+        decrement(state) {
             state.biblioMark -= 1
+        },
+        clearMark(state)
+        {
+            state.biblioMark = 0
+            localStorage.setItem('biblioMark', JSON.stringify({}))
         }
     }
 })
@@ -105,6 +111,34 @@ if (isSelectorActive('#appDetail'))
         data: {
             showModal: false,
             modalAttribute: {}
+        },
+        methods: {
+            replaceBookCoverPosition()
+            {
+                if (typeof this.$refs.bookCover !== 'undefined')
+                {
+                    this.$refs.mutationImage.innerHTML = this.$refs.bookCover.innerHTML
+                    this.$refs.bookCover.innerHTML = ''
+                }
+            },
+            openPDFPopUp(e)
+            {
+                e.preventDefault()
+                // set overflow hidden
+                document.querySelector('body').classList.add('overflow-hidden');
+                // set modal
+                this.showModal = true;
+                this.modalAttribute = {
+                    title: e.target.getAttribute('title'),
+                    content: 'Iframe',
+                    modalWidth: 'md',
+                    data: {iframeSrc: e.target.getAttribute('href'), heightIframeCss: 'h-pdf'}
+                };
+            }
+        },
+        mounted()
+        {
+            this.replaceBookCoverPosition()
         }
     })
 }

@@ -15,6 +15,13 @@ function tarsiusUrl(string $additionalUrl): string
     return SWB . 'template/'.$template.'/' .$additionalUrl;
 }
 
+function tarsiusDir(string $additionalPath = ''): string
+{
+    global $sysconf;
+
+    return SB . 'template' . DS . $sysconf['template']['theme'] . DS . $additionalPath;
+}
+
 function tarsiusLoad($path, string $type = 'include'): void
 {
     global $sysconf,$page_title,$metadata,
@@ -28,26 +35,43 @@ function tarsiusLoad($path, string $type = 'include'): void
     }
 
     foreach ($path as $key => $file) {
-        if (file_exists($file))
+        if (file_exists($file. '.php'))
         {
             switch ($type) {
                 case 'include':
-                    include $file;
+                    include $file . '.php';
                     break;
         
                 case 'include_once':
-                    include_once $file;
+                    include_once $file . '.php';
                     break;
         
                 case 'require':
-                    require $file;
+                    require $file . '.php';
                     break;
                 case 'require_once':
-                    require_once $file;
+                    require_once $file . '.php';
                     break;
             }
         }            
     }
+}
+
+
+function tarsiusComponents($components)
+{
+    if (is_array($components))
+    {
+        foreach ($components as $id => $component) {
+            $components[$id] = tarsiusDir('components' . DS . $component);
+        }
+    }
+    else
+    {
+        $components = tarsiusDir('components' . DS . $components);
+    }
+
+    tarsiusLoad($components);
 }
 
 function tarsiusMeta(array $metas):void
@@ -188,16 +212,16 @@ function conditionComponent($dir, $arrayComponents)
 
     $match = false;
     foreach ($arrayComponents as $components) {
-        if (isset($_GET['p']) && ($components === $_GET['p']) && file_exists($dir.DS.$components.'.php')) 
+        if (isset($_GET['p']) && ($components === $_GET['p']) && file_exists($dir . DS . $components . '.php')) 
         {
             $match = true; 
-            tarsiusLoad($dir.DS.$components.'.php');
+            tarsiusLoad($dir.DS.$components);
         }
     }
 
     if (!$match)
     {
-        echo $main_content;
+        tarsiusLoad($dir . DS . 'commonTemplate');
     }
 }
 
@@ -335,7 +359,7 @@ function removeSessionBasket()
     }
 }
 
-function httpRequest($url)
+function httpRequest(string $url): string
 {
     // get from https://reqbin.com/req/php/c-1n4ljxb9/curl-get-request-example
     $curl = curl_init($url);
@@ -352,10 +376,19 @@ function httpRequest($url)
     return $resp;
 }
 
-function locationMap($html)
+function locationMap(string $html): string
 {
-    // $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
-    $iframeFiltering = strip_tags($html, '<iframe>');
+    $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
+    $iframeFiltering = strip_tags($removeWidthHeight, '<iframe>');
 
     return $iframeFiltering;
+}
+
+function dd($mix, $exit = true)
+{
+    echo '<pre>';
+    var_dump($mix);
+    echo '</pre>';
+
+    if ($exit) exit();
 }

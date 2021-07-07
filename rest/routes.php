@@ -4,9 +4,9 @@ require __DIR__ . '/../tools/helper.php';
 
 // register controller
 $controllers = [
-    __DIR__ . '/Controllers/RockyBiblio.php',
-    __DIR__ . '/Controllers/RockyImage.php',
-    __DIR__ . '/Controllers/RockyUi.php'
+    __DIR__ . '/Controllers/RockyBiblio',
+    __DIR__ . '/Controllers/RockyImage',
+    __DIR__ . '/Controllers/RockyUi'
 ];
 
 tarsiusLoad($controllers, 'require');
