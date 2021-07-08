@@ -84,7 +84,7 @@ export default {
         removePreloader()
         {
             // Loader
-            let loader = document.querySelector('#preloader');
+            let loader = document.querySelector('.preloader');
             let body = document.querySelector('body');
 
             loader.classList.add('animate__animated', 'animate__fadeOut', 'animate__delay-2s');
@@ -146,7 +146,7 @@ export default {
         // // Attach event listener to the root vue element
         // this.$el.addEventListener('click', this.onClick)
         // // loader
-        // this.removePreloader();
+        this.removePreloader();
     },
     beforeDestroy() {
         // this.$el.removeEventListener('click', this.onClick)

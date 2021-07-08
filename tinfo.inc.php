@@ -13,7 +13,7 @@ $sysconf['template']['responsive'] = false;
 // set rocky template info
 $sysconf['template']['rocky_newbook'] = 1;
 $sysconf['template']['rocky_library_subname'] = 1;
-$sysconf['template']['rocky_library_map'] = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63301.06337836403!2d109.19940401108268!3d-7.430189416028237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c3136423d1d%3A0x4027a76e352e4a0!2sPurwokerto%2C%20Kabupaten%20Banyumas%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1625549655851!5m2!1sid!2sid"';
+$sysconf['template']['rocky_library_map'] = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63301.06337836403!2d109.19940401108268!3d-7.430189416028237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c3136423d1d%3A0x4027a76e352e4a0!2sPurwokerto%2C%20Kabupaten%20Banyumas%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1625549655851!5m2!1sid!2sid';
 $sysconf['template']['rocky_library_map_info'] = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
 $sysconf['template']['rocky_library_services'] = 'Service 1|Service 2|Service 3';
 $sysconf['template']['rocky_library_sub_services'] = 'sub service 1|http://localhost,sub service 2|http://localhost,sub service 3|http://localhost';
@@ -27,6 +27,7 @@ $sysconf['template']['rocky_carousell_type'] = 'loop'; // options slide
 $sysconf['template']['rocky_carousell_show'] = 8; // if you use loop type
 $sysconf['template']['rocky_carousell_gap'] = '1em'; // if you use loop type
 $sysconf['template']['rocky_carousell_autoplay'] = true;
+$sysconf['template']['rocky_preloader'] = 1;
 
 
 $sysconf['template']['option'][$sysconf['template']['theme']] = [
@@ -163,6 +164,15 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
             ['loop', __('Loop')],
             ['slide', __('Slide')]
         ]
+    ],
+    'preloader' => [
+        'dbfield' => 'rocky_preloader',
+        'label' => 'Active Preloader',
+        'type' => 'dropdown',
+        'default' => 1,
+        'data' => [
+            [1, __('Enable')],
+            [0, __('Disable')]
+        ]
     ]
-
 ];

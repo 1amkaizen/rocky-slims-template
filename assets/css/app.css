@@ -273,3 +273,18 @@ ul.attachList > li > a {
 .h-pdf {
     height: 380px !important;
 }
+
+.preloader {
+    background-color: rgba(59,130,246,var(--tw-bg-opacity));
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 9999;
+}
+
+.notSupport {
+    background-color: white;
+    z-index: 20;
+}

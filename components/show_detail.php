@@ -1,4 +1,11 @@
 <?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2021-07-08 13:35:55
+ * @modify date 2021-07-08 13:35:55
+ * @desc [description]
+ */
 
 isDirect();
 
@@ -7,7 +14,6 @@ isDirect();
     <aside class="in-zi w-2-5/12 bg-blue-500">
         <div class="in-zi mutationImage fixed top-20 w-2-5/12 px-4 py-2 text-white">
             <figure ref="mutationImage">
-
             </figure>
         </div>
     </aside>

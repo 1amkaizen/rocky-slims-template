@@ -38,33 +38,45 @@ isDirect();
             tarsiusComponents('meta'); 
             // session remove basket
             removeSessionBasket();
-        ?>   
+        ?> 
     </head>
     
-    <body class="bg-gray-100">
-        <!-- Pre Loader -->
+    <body class="bg-gray-100 <?= ($sysconf['template']['rocky_preloader']) ? 'overflow-hidden' : '' ?>">
         <?php
-        // navbar
-        tarsiusComponents('navbar');
-        ?>
-
-        <div>
-            <?php
-            // set content
-            if (!isset($_GET['p']) && !isset($_GET['search'])) {
-                // load first content
-                tarsiusComponents('landingPage');
-            } 
-            else
+        if (!utility::isMobileBrowser()) 
+        {
+            // Preloader
+            if ($sysconf['template']['rocky_preloader'])
             {
-                tarsiusComponents('content');
+                tarsiusComponents('preloader');
             }
+
+            // navbar
+            tarsiusComponents('navbar');
             ?>
-        </div>
+
+            <div>
+                <?php
+                // set content
+                if (!isset($_GET['p']) && !isset($_GET['search'])) {
+                    // load first content
+                    tarsiusComponents('landingPage');
+                } 
+                else
+                {
+                    tarsiusComponents('content');
+                }
+                ?>
+            </div>
 
         <?php
-        // JS
-        tarsiusComponents('js');
+            // JS
+            tarsiusComponents('js');
+        }
+        else
+        {
+            tarsiusComponents('notSupport');
+        }
         ?>
     </body>
 </html>

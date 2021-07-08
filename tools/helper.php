@@ -173,7 +173,7 @@ function isDirect():void
     }
 }
 
-function keywordsFilter($string)
+function keywordsFilter(string $string)
 {
     $string = strip_tags($string);
     $string = str_replace('"', '', $string);
@@ -181,7 +181,7 @@ function keywordsFilter($string)
     return $string;
 }
 
-function keywordRegex($string)
+function keywordRegex(string $string)
 {
     $filterKeywords = keywordsFilter($string);
     $chunkKeywords = explode(' ', $filterKeywords);
@@ -206,7 +206,7 @@ function jsonResponse($mix)
     exit;
 }   
 
-function conditionComponent($dir, $arrayComponents)
+function conditionComponent(string $dir, array $arrayComponents)
 {
     global $main_content;
 
@@ -286,11 +286,11 @@ function getLogo()
     return null;
 }
 
-function fetchData(object $obj)
+function fetchData(object $obj, string $type = PDO::FETCH_ASSOC)
 {
     $result = [];
 
-    while ($data = $obj->fetch(PDO::FETCH_ASSOC)) {
+    while ($data = $obj->fetch($type)) {
         $result[] = $data;
     }
 
@@ -381,7 +381,7 @@ function locationMap(string $html): string
     // $removeWidthHeight = preg_replace('/(width="+[0-9]+"\s+)|(height="+[0-9]+")/', 'class="h-64 w-64"', $html);
     // $iframeFiltering = strip_tags($removeWidthHeight, '<iframe>');
 
-    return '<iframe src="' . addslashes($html) .' style="border:0;" class="h-64 w-64" allowfullscreen="" loading="lazy"></iframe>';
+    return '<iframe src="' . addslashes($html) .'" style="border:0;" class="h-64 w-64" allowfullscreen="" loading="lazy"></iframe>';
 }
 
 function dd($mix, $exit = true)

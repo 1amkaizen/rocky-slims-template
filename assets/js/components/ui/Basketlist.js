@@ -4,7 +4,7 @@ const temp = `
             <span>{{ $store.state.biblioMark +' '+ numLabel }}</span>
         </div>
         <div class="w-full">
-            <button class="bg-green-600 hover:bg-green-500 rounded-md py-2 px-3 text-white">{{ btnReserveLabel }}</button>
+            <button v-on:click="reserveBook" class="bg-green-600 hover:bg-green-500 rounded-md py-2 px-3 text-white">{{ btnReserveLabel }}</button>
             <button v-on:click="clearBasket" class="bg-yellow-600 hover:bg-yellow-500 rounded-md py-2 px-3 text-white">{{ btnReserveClear }}</button>
             <button v-on:click="removeItemSelected" class="bg-red-600 hover:bg-red-500 py-2 px-3 rounded-md text-white">{{ btnReserveRemove }}</button>
         </div>
@@ -48,7 +48,8 @@ export default {
             type: String,
             default: 'Remove selected'
         },
-        numLabel: String
+        numLabel: String,
+        reserveType: String
     },
     name: 'Basketlist',
     template: temp,
@@ -91,13 +92,16 @@ export default {
         async removeItemSelected()
         {
             let formData = new FormData()
+            let cacheId = []
 
             this.$refs.basket.forEach(item => {
                 if (item.checked)
                 {
+                    cacheId.push(item.value)
                     formData.append('basket[]', item.value)
                 }
             });
+            formData.append('basketRemove', '1')
 
             await fetch('index.php?p=member', {
                 method: 'POST',
@@ -106,10 +110,72 @@ export default {
             .then(response => {
                 if (response.status === 200)
                 {
-                    this.toastr('Berhasil menghapus daftar keranjang', 'Info', 'info', 'top')
+                    let data = JSON.parse(localStorage.getItem('biblioMark'))
+
+                    cacheId.forEach(id => {
+                        delete data[`mark${id}`]
+                        this.$store.commit('decrement')
+                    })
+
+                    localStorage.setItem('biblioMark', JSON.stringify(data))
+                    this.toastr('Berhasil menghapus data dari keranjang', 'Info', 'info', 'bottom')
+
+                    setTimeout(() => {
+                        location.reload()
+                    }, 500);
                 }
             })
-        }
+        },
+        async reserveBook()
+        {
+            let formData = new FormData();
+            formData.append('sendReserve', '1')
+
+            await fetch('index.php?p=member', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                
+                let error = 0;
+                let successReserve = ''
+                let errorReserve = ''
+            
+                if (typeof result[0] === 'undefined')
+                {
+                    this.toastr(result.message, 'Galat', 'error')
+                    return
+                }
+
+
+                result.forEach(reserve => {
+                    if (reserve.status === 'SUCCESS')
+                    {
+                        successReserve += reserve.message + ', '
+                    }
+                    else
+                    {
+                        errorReserve += reserve.message
+                        error++
+                    }
+                })
+                
+                if (error === 0)
+                {
+                    this.toastr(successReserve, 'Sukses', 'success')
+                    setTimeout(() => { location.reload() }, 5000)
+                }
+                else
+                {
+                    this.toastr(errorReserve, 'Galat', 'error')
+                }
+            })
+            // .catch((error) => {
+            //     this.toastr('Sesi habis, atau ada hal lain. Silahkan login lagi.', 'Galat', 'error')
+            //     setTimeout(() => { location.href = '?p=member' }, 5000)
+            // })
+        },
     },
     mounted()
     {

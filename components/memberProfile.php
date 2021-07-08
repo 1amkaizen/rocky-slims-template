@@ -1,4 +1,12 @@
 <?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2021-07-08 13:33:37
+ * @modify date 2021-07-08 13:33:37
+ * @desc [description]
+ */
+
 isDirect();
 
 // set section
@@ -39,6 +47,12 @@ $tabs_menus = [
         <?php endforeach; ?>
         <!-- Logout -->
         <a href="?p=member&logout=1" class="bg-red-600 text-white px-3 py-2 mb-3 no-underline rounded-md float-right"><?= __('Logout') ?></a>
+        <?php if (isset($_SESSION['info']) && !$sysconf['reserve_direct_database']): ?>
+            <!-- Alert -->
+            <div class="alert alert-<?= $_SESSION['info']['status'] ?>" role="alert">
+                <?= $_SESSION['info']['data'] ?>
+            </div>
+        <?php endif; ?>
         <!-- set content -->
         <?php
             switch ($section) {
@@ -49,7 +63,7 @@ $tabs_menus = [
                     break;
                 case 'title_basket':
                     echo '<div class="memberProfile mt-8 w-full">';
-                    echo '<Basketlist num-label="' . __('title(s) on basket') . '" btn-reserve-label="' . __('Reserve title(s) on Basket') . '" btn-reserve-clear="' . __('Clear Basket') . '" btn-reserve-remove="' . __('Remove selected title(s) from Basket') . '"><Basketlist/>';
+                    echo '<Basketlist reserve-type="' .$sysconf['reserve_direct_database']. '" num-label="' . __('title(s) on basket') . '" btn-reserve-label="' . __('Reserve title(s) on Basket') . '" btn-reserve-clear="' . __('Clear Basket') . '" btn-reserve-remove="' . __('Remove selected title(s) from Basket') . '"><Basketlist/>';
                     echo '</div>';
                     break;
                 case 'loan_history':

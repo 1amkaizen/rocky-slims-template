@@ -1,4 +1,11 @@
 <?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2021-07-08 12:39:14
+ * @modify date 2021-07-08 12:39:14
+ * @desc [description]
+ */
 
 isDirect();
 

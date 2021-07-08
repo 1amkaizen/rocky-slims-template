@@ -1,5 +1,14 @@
 <?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2021-07-08 13:33:23
+ * @modify date 2021-07-08 13:33:23
+ * @desc [description]
+ */
+
 isDirect();
+
 ?>
 <div class="w-full h-screen mb-4 bg-gray-100">
     <?php if (!utility::isMemberLogin()): ?>

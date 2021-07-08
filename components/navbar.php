@@ -18,7 +18,7 @@ $jsonLang = str_replace('"', '\'', json_encode(setLangFlagList($defaultLang, $av
 
 ?>
 <nav id="navbar" class="w-full flex items-center justify-between flex-wrap py-2 px-4 fixed top-0 rocky-head" style="z-index: 3">
-  <?php imagickCheck(); curlCheck(); ?>
+  <?php imagickCheck(); ?>
   <!-- Right -->
   <div onclick="location.href = './'" class="flex flex-shrink-0 items-center text-white cursor-pointer">
     <div class="w-8">
@@ -56,7 +56,6 @@ $jsonLang = str_replace('"', '\'', json_encode(setLangFlagList($defaultLang, $av
         </svg>
         <?php if (utility::isMemberLogin()): ?>
           <span class="inline-block mx-1"><?= shortCutWord($_SESSION['m_name'], 1) ?></span>
-          <!-- <span >{{ $store.state.count }}</span> -->
         <?php endif; ?>
       </a>
       <!-- Basket -->

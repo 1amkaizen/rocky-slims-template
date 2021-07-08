@@ -46,7 +46,7 @@ $class =  (!isset($_GET['p'])) ? 'class="flex flex-wrap h-screen"' : null;
     </div>
 <?php 
 else: 
-    conditionComponent(__DIR__, ['member','show_detail']);
+    conditionComponent(__DIR__, ['member','show_detail','visitor']);
 endif;
 ?>
     <!-- Modal -->
