@@ -29,5 +29,8 @@ $router->map('GET', '/opac/common/[a:type]', 'RockyUi@common');
 // Member area
 $router->map('GET', '/opac/memberarea/getbasket', 'RockyUi@basket');
 
+// Visitor image
+$router->map('GET', '/visitor/person/profile/[*:memberId]', 'RockyUi@searchImage');
+
 // get book image
 $router->map('GET', '/cover/book/[i:w]/[i:h]/[*:filename]', 'RockyImage@stream');

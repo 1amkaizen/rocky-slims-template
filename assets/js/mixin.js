@@ -87,12 +87,15 @@ export default {
             let loader = document.querySelector('.preloader');
             let body = document.querySelector('body');
 
-            loader.classList.add('animate__animated', 'animate__fadeOut', 'animate__delay-2s');
+            if (loader !== null)
+            {
+                loader.classList.add('animate__animated', 'animate__fadeOut', 'animate__delay-2s');
 
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                body.classList.remove('overflow-hidden');
-            }, 2500);
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    body.classList.remove('overflow-hidden');
+                }, 2500);
+            }
         },
         getEnv()
         {

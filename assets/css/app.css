@@ -76,6 +76,13 @@ body {
     background-position: center center;
 }
 
+.visitor-banner {
+    background: url(../images/visitorbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
 .login-screen {
     background: linear-gradient(to bottom,rgb(25 25 25 / 44%) 0,rgb(173 173 173 / 21%) 100%),url(../images/bg1.jpg);
     background-repeat: no-repeat;
@@ -287,4 +294,8 @@ ul.attachList > li > a {
 .notSupport {
     background-color: white;
     z-index: 20;
+}
+
+.visitor-input {
+    outline-style: none;
 }

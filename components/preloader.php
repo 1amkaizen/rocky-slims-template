@@ -12,9 +12,9 @@ isDirect();
 ?>
 <div class="h-screen w-full absolute preloader">
     <?php if (!is_null(getLogo())): ?>
-        <img src="<?= getLogo() ?>" class="block mx-auto h-20 w-20" style="margin-top: 18rem;"/>
+        <img src="<?= getLogo() ?>" class="block mx-auto h-20 w-20" style="margin-top: 14rem;"/>
     <?php else: ?>
-        <svg class="fill-current text-gray-200 block mx-auto h-20 w-20" style="margin-top: 18rem;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 118.4 135" style="enable-background:new 0 0 118.4 135;" xml:space="preserve">
+        <svg class="fill-current text-gray-200 block mx-auto h-20 w-20" style="margin-top: 14rem;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 118.4 135" style="enable-background:new 0 0 118.4 135;" xml:space="preserve">
                     <path d="M118.3,98.3l0-62.3l0-0.2c-0.1-1.6-1-3-2.3-3.9c-0.1,0-0.1-0.1-0.2-0.1L61.9,0.8c-1.7-1-3.9-1-5.4-0.1l-54,31.1
                     l-0.4,0.2C0.9,33,0.1,34.4,0,36c0,0.1,0,0.2,0,0.3l0,62.4l0,0.3c0.1,1.6,1,3,2.3,3.9c0.1,0.1,0.2,0.1,0.2,0.2l53.9,31.1l0.3,0.2
                     c0.8,0.4,1.6,0.6,2.4,0.6c0.8,0,1.5-0.2,2.2-0.5l53.9-31.1c0.3-0.1,0.6-0.3,0.9-0.5c1.2-0.9,2-2.3,2.1-3.7c0-0.1,0-0.3,0-0.4

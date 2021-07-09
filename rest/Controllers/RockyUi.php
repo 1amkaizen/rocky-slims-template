@@ -44,4 +44,19 @@ class RockyUi
         // no session no data
         jsonResponse([]);
     }
+
+    public function searchImage($memberId)
+    {
+        $dir = scandir(IMGBS . 'persons' . DS);
+        $memberId = urldecode($memberId);
+
+        $photoProfile = array_values(array_filter($dir, function($file) use($memberId) {
+            if (preg_match('/(member_'.$memberId.')/i', $file))
+            {
+                return $file;
+            }
+        }));
+
+        jsonResponse(['status' => (isset($photoProfile[0])) ?? false, 'file' => (isset($photoProfile[0])) ? './images/persons/' . $photoProfile[0] : []]);
+    }
 }

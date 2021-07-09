@@ -35,7 +35,7 @@ isDirect();
             <!-- Grid services -->
             <?php
             $numService = explode('|', trim($sysconf['template']['rocky_library_services'], '|'));
-            $parseService = explode(',', trim($sysconf['template']['rocky_library_sub_services'], ','));
+            $parseService = explode('-', trim($sysconf['template']['rocky_library_sub_services'], '-'));
             $perService = round((count($parseService) / count($numService)));
             ?>
             <div class="mt-4 grid grid-cols-<?= count($numService) ?> gap-5">

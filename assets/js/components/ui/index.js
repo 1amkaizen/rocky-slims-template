@@ -8,6 +8,7 @@ import Basket from './Basket.js'
 import Modal from './Modal.js'
 import Basketlist from './Basketlist.js'
 import Banner from './Banner.js'
+import Visitorform from './VisitorForm.js'
 
 export {
     Searchbox,
@@ -19,5 +20,6 @@ export {
     Modal,
     Basket,
     Basketlist,
-    Banner
+    Banner,
+    Visitorform
 }

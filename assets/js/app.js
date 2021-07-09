@@ -25,7 +25,8 @@ function openDropDown(obj)
 import {Newbook, Popular} from './components/splide/index.js'
 import {Searchbox, Advancesearch, Lang, 
         Titlehighlight, Buttontwice, Modal, 
-        Buttonbasket, Basket, Basketlist, Banner} from './components/ui/index.js'
+        Buttonbasket, Basket, Basketlist, Banner,
+        Visitorform} from './components/ui/index.js'
 
 // import mixin
 import objectMixin from './mixin.js'
@@ -92,6 +93,16 @@ if (isSelectorActive('#advanceSearch'))
         el: '#advanceSearch',
         components: {
             Advancesearch
+        }
+    })
+}
+
+if (isSelectorActive('#visitorCounter'))
+{
+    const visitorCounter = new Vue({
+        el: '#visitorCounter',
+        components: {
+            Visitorform
         }
     })
 }
