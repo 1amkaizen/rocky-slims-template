@@ -11,7 +11,7 @@
  {
      public function stream(int $width, int $height, string $fileName)
      {
-         if (!class_exists('Imagick'))
+         if (class_exists('Imagick'))
          {
             $file = SB . 'images/docs/' . basename($fileName);
 
