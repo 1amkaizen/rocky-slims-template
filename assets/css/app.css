@@ -136,9 +136,9 @@ body {
     top: 1em;
 }
 
-a {
+/* a {
     color: white
-}
+} */
 
 .xmlResultLink,.jsonResultLink {
     padding-right: 5px
@@ -183,12 +183,12 @@ span.pagingList > a:hover {
 }
 }
 
-.text-author > a {
+span.text-author > a {
     color: black !important;
     text-decoration: none;
 }
 
-.text-author > a:hover {
+span.text-author > a:hover {
     color: rgba(59,130,246,var(--tw-bg-opacity)) !important;
     text-decoration: none;
 }
