@@ -11,7 +11,7 @@
  {
      public function stream(int $width, int $height, string $fileName)
      {
-         if (class_exists('Imagick'))
+         if (!class_exists('Imagick'))
          {
             $file = SB . 'images/docs/' . basename($fileName);
 
@@ -38,9 +38,10 @@
             if (!file_exists($file))
             {
                 $file = SB . 'images/default/image.png';
-                header('Content-type: '.mime_content_type($file));
-                echo $image->getImageBlob();
             }
+
+            header('Content-type: '.mime_content_type($file));
+            echo file_get_contents($file);
          }
      }
  }
