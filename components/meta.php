@@ -106,6 +106,8 @@ if (ENVIRONMENT === 'development')
 tarsiusMeta(array_merge($metaMap, $metaEnv, $description, $og, $twitter));
 
 // css
+$font = ($sysconf['template']['rocky_font_src'] === 'offline') ? 'font.css' : 'font-online.css';
+
 $cssMap = [
     '<!-- Fav Icon -->',
     ['rel' => 'shortcut icon', 'href' => 'webicon.ico', 'type' => 'image/x-icon'],
@@ -117,6 +119,7 @@ $cssMap = [
     ['href' => tarsiusUrl('assets/css/animate.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl('assets/js/lib/splide/css/splide.min.css'), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl("assets/css/vue-toastr-2.min.css"), 'rel' => 'stylesheet', 'type' => 'text/css'],
+    ['href' => tarsiusUrl('assets/css/' . $font), 'rel' => 'stylesheet', 'type' => 'text/css'],
     ['href' => tarsiusUrl(versioning('assets/css/app.css')), 'rel' => 'stylesheet', 'type' => 'text/css'],
 ];
 

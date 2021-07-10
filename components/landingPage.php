@@ -39,7 +39,7 @@ $sidebar = [
     <div class="w-9-5/12">
         <div class="grid grid-cols-1 gap-0">
             <!-- Banner -->
-            <Banner></Banner>
+            <Banner quotes-active="<?= $sysconf['template']['rocky_quotes_od'] ?>"></Banner>
             <!-- Newbook -->
             <div class="mt-0 px-12 pt-8">
                 <h5 class="border-b-2 border-blue-500 mb-10 w-fit -zi-3"><?= t('New Book') ?></h5>

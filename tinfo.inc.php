@@ -27,6 +27,8 @@ $sysconf['template']['rocky_carousell_type'] = 'loop'; // options slide
 $sysconf['template']['rocky_carousell_show'] = 8; // if you use loop type
 $sysconf['template']['rocky_carousell_gap'] = '1em'; // if you use loop type
 $sysconf['template']['rocky_carousell_autoplay'] = true;
+$sysconf['template']['rocky_quotes_od'] = 0;
+$sysconf['template']['rocky_font_src'] = 'online';
 $sysconf['template']['rocky_preloader'] = 1;
 $sysconf['template']['rocky_visitor_log_voice'] = 1;
 
@@ -188,6 +190,26 @@ $sysconf['template']['option'][$sysconf['template']['theme']] = [
         'data' => [
             [1, __('Enable')],
             [0, __('Disable')]
+        ]
+    ],
+    'quotes-od' => [
+        'dbfield' => 'rocky_quotes_od',
+        'label' => 'Active Quotes?',
+        'type' => 'dropdown',
+        'default' => 0,
+        'data' => [
+            [1, __('Enable')],
+            [0, __('Disable')]
+        ]
+    ],
+    'online-font' => [
+        'dbfield' => 'rocky_font_src',
+        'label' => 'Font Source?',
+        'type' => 'dropdown',
+        'default' => 'offline',
+        'data' => [
+            ['offline', __('Offline')],
+            ['online', __('Online')]
         ]
     ]
 ];

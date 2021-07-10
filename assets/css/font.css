@@ -1,0 +1,7 @@
+@import url('../fonts/Kanit-Regular.ttf');
+@import url('../fonts/Quicksand-Regular.ttf');
+@import url('../fonts/Questrial-Regular.ttf');
+
+body {
+    font-weight: 600;
+}
