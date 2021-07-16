@@ -10,14 +10,26 @@
 // require helper
 require __DIR__ . '/../tools/helper.php';
 
+// set unique api key
+$rocky_unique_key = base64_encode(md5(__DIR__));
+
 // register controller
 $controllers = [
     __DIR__ . '/Controllers/RockyBiblio',
     __DIR__ . '/Controllers/RockyImage',
-    __DIR__ . '/Controllers/RockyUi'
+    __DIR__ . '/Controllers/RockyUi',
+    __DIR__ . '/Controllers/RockyMember'
 ];
 
 tarsiusLoad($controllers, 'require');
+
+if (ENVIRONMENT === 'development')
+{
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Credentials: true') ;
+    header('Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT');
+    header('Access-Control-Allow-Headers: *');
+}
 
 // get new book
 $router->map('GET', '/newbook', 'RockyBiblio@getLatest');
@@ -34,3 +46,7 @@ $router->map('GET', '/visitor/person/profile/[*:memberId]', 'RockyUi@searchImage
 
 // get book image
 $router->map('GET', '/cover/book/[i:w]/[i:h]/[*:filename]', 'RockyImage@stream');
+
+// Member login
+$router->map('OPTIONS', '/rockylight/member/login', 'RockyMember@auth');
+$router->map('POST', '/rockylight/member/login', 'RockyMember@auth');
