@@ -76,6 +76,8 @@ export default {
     },
     mounted()
     {
-        this.createSlide();
+        this.$nextTick(() => {
+            this.createSlide()
+        })
     }
 }

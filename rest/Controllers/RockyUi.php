@@ -30,6 +30,12 @@ class RockyUi
             case 'colltype':
                 $list = Uimod::getCollTypeList();
                 break;
+            case 'basicinformation':
+                $list = [
+                    'library_name' => $this->sysconf['library_name'],
+                    'library_map' => $this->sysconf['template']['rocky_library_map']
+                ];
+                break;
         }
 
         jsonResponse($list);

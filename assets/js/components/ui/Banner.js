@@ -42,6 +42,8 @@ export default {
     },
     mounted()
     {
-        this.getOnlineQuote()
+        this.$nextTick(() => {
+            this.getOnlineQuote()
+        })
     }
 }
