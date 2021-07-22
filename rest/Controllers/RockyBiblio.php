@@ -97,4 +97,40 @@ class RockyBiblio
         // set response
         jsonResponse($return);
     }
+
+    public function lazyLoad($position = 'all')
+    {
+        $db = SLiMS\DB::getInstance();
+
+        // get max id
+        $maxId = (!is_numeric($position)) ? 
+                        $db->query('select max(biblio_id) from search_biblio')->fetch(PDO::FETCH_NUM)[0]
+                        :
+                        $position;
+
+        // Grab data
+        $data = $db->prepare('select biblio_id,title,image,notes from search_biblio where biblio_id <= :maxId order by biblio_id desc limit 5');
+        $data->execute(['maxId' => $maxId]);
+        // set cache
+        $cache = [];
+        $cache['status'] = true;
+        $cache['data'] = [];
+
+        // set row count
+        if ($data->rowCount() > 0)
+        {
+            $cache['nextMax'] = $maxId  - 5;
+            while($result = $data->fetch(PDO::FETCH_ASSOC))
+            {
+                $result['notes'] = (!empty($result['notes'])) ? substr($result['notes'], 0,50) . '...' : 'No Description Available';
+                $cache['data'][] = $result;
+            }
+        }
+        else
+        {
+            $cache['status'] = false;
+        }
+
+        jsonResponse($cache);
+    }
 }

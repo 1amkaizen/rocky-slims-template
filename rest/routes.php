@@ -35,6 +35,9 @@ if (ENVIRONMENT === 'development')
 $router->map('GET', '/newbook', 'RockyBiblio@getLatest');
 $router->map('GET', '/popularbook', 'RockyBiblio@getPopular');
 
+// Book
+$router->map('GET', '/booklist/[*:position]', 'RockyBiblio@lazyLoad');
+
 // Ui
 $router->map('GET', '/opac/common/[a:type]', 'RockyUi@common');
 

@@ -17,7 +17,7 @@
 
             if (!file_exists($file))
             {
-                $file = SB . 'images/default/image.png';
+                $file = tarsiusDir('assets' . DS . 'images' . DS . 'book.png');
             }
 
             $image = new Imagick($file);
@@ -37,7 +37,7 @@
 
             if (!file_exists($file))
             {
-                $file = SB . 'images/default/image.png';
+                $file = tarsiusDir('assets' . DS . 'images' . DS . 'book.png');
             }
 
             header('Content-type: '.mime_content_type($file));
