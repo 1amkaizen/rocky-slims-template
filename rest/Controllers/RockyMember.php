@@ -42,6 +42,7 @@ class RockyMember extends member_logon
 
         if ($this->valid($this->dbs))
         {
+            unset($this->user_info['mpasswd']);
             $token = Openssl::crypt(json_encode(['username' => $this->post['username'], 'expired' => strtotime(date('Y-m-d H:i:s', strtotime('+2 Hours')))]), $rocky_unique_key);
             Http::responseJson(['status' => true, 'data' => $this->user_info, 'token' => $token]);
         }
