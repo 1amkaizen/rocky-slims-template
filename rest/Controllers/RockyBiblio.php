@@ -133,4 +133,9 @@ class RockyBiblio
 
         jsonResponse($cache);
     }
+
+    public function search()
+    {
+        
+    }
 }
