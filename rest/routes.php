@@ -10,6 +10,9 @@
 // require helper
 require __DIR__ . '/../tools/helper.php';
 
+// require autoload
+require __DIR__ . '/../tools/autoload.php';
+
 // set unique api key
 $rocky_unique_key = base64_encode(md5(__DIR__));
 
@@ -38,6 +41,7 @@ $router->map('GET', '/searchbook', 'RockyBiblio@searchBook');
 
 // Book
 $router->map('GET', '/booklist/[*:position]', 'RockyBiblio@lazyLoad');
+$router->map('GET', '/booksearch', 'RockyBiblio@search');
 
 // Ui
 $router->map('GET', '/opac/common/[a:type]', 'RockyUi@common');
@@ -54,3 +58,6 @@ $router->map('GET', '/cover/book/[i:w]/[i:h]/[*:filename]', 'RockyImage@stream')
 // Member login
 $router->map('OPTIONS', '/rockylight/member/login', 'RockyMember@auth');
 $router->map('POST', '/rockylight/member/login', 'RockyMember@auth');
+
+// Test
+$router->map('GET', '/test', 'Rocky\Controllers\RockyTest@do');
