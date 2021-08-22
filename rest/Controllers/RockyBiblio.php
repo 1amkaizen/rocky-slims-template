@@ -133,4 +133,27 @@ class RockyBiblio
 
         jsonResponse($cache);
     }
+
+    public function searchBook()
+    {
+        // Set DB
+        $db = SLiMS\DB::getInstance();
+
+        $Keywords = '';
+        foreach (isset($_GET['keywords']) ? explode(' ', $_GET['keywords']) : [] as $index => $value) {
+            $Keywords .= '+' . $value .' ';
+        }
+        $Keywords = substr_replace($Keywords, '', -1);
+
+        // Set up query
+        $Data = $db->prepare('select biblio_id,title,image,notes from search_biblio where match(title) against(:keywords)');
+        $Data->execute(['keywords' => "$Keywords IN BOOLEAN MODE"]);
+
+        $Result = [];
+        while ($Loop = $Data->fetch(PDO::FETCH_ASSOC)) {
+            $Result[] = $Loop;
+        }
+
+        jsonResponse(['status' => (bool)count($Result), 'msg' => 'ok', 'data' => $Result]);
+    }
 }
